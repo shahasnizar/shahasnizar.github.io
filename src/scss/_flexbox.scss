@@ -1,0 +1,51 @@
+// stylelint-disable declaration-no-important
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include respond-above($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    .flex#{$infix}-row            { flex-direction: row; }
+    .flex#{$infix}-column         { flex-direction: column; }
+    .flex#{$infix}-row-reverse    { flex-direction: row-reverse; }
+    .flex#{$infix}-column-reverse { flex-direction: column-reverse; }
+
+    .flex#{$infix}-wrap         { flex-wrap: wrap; }
+    .flex#{$infix}-nowrap       { flex-wrap: nowrap; }
+    .flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse; }
+    .flex#{$infix}-fill         { flex: 1 1 auto; }
+    .flex#{$infix}-grow-0       { flex-grow: 0; }
+    .flex#{$infix}-grow-1       { flex-grow: 1; }
+    .flex#{$infix}-shrink-0     { flex-shrink: 0; }
+    .flex#{$infix}-shrink-1     { flex-shrink: 1; }
+
+    .jc#{$infix}-s   { justify-content: flex-start; }
+    .jc#{$infix}-e     { justify-content: flex-end; }
+    .jc#{$infix}-c  { justify-content: center; }
+    .jc#{$infix}-b { justify-content: space-between; }
+    .jc#{$infix}-a  { justify-content: space-around; }
+
+    .ai#{$infix}-s    { align-items: flex-start; }
+    .ai#{$infix}-e      { align-items: flex-end; }
+    .ai#{$infix}-c   { align-items: center; }
+    .ai#{$infix}-b { align-items: baseline; }
+    .ai#{$infix}-stretch  { align-items: stretch; }
+
+    .ac#{$infix}-s   { align-content: flex-start; }
+    .ac#{$infix}-e    { align-content: flex-end; }
+    .ac#{$infix}-c  { align-content: center; }
+    .ac#{$infix}-b { align-content: space-between; }
+    .ac#{$infix}-a  { align-content: space-around; }
+    .ac#{$infix}-stretch { align-content: stretch; }
+
+    .as#{$infix}-auto     { align-self: auto; }
+    .as#{$infix}-s    { align-self: flex-start; }
+    .as#{$infix}-e      { align-self: flex-end; }
+    .as#{$infix}-c   { align-self: center; }
+    .as#{$infix}-b { align-self: baseline; }
+    .as#{$infix}-stretch  { align-self: stretch; }
+  }
+}
