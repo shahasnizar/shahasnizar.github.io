@@ -4,16 +4,16 @@ var sass = require('gulp-sass');
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-return gulp.src(['node_modules/normalize.css/normalize.css', 'src/scss/*.scss'])
+return gulp.src(['node_modules/normalize.css/normalize.css', 'docs/scss/*.scss'])
 .pipe(sass())
-.pipe(gulp.dest("src/css"))
+.pipe(gulp.dest("docs/css"))
 .pipe(browserSync.stream());
 });
 
-// Move the javascript files into our /src/js folder
+// Move the javascript files into our /docs/js folder
 gulp.task('js', function() {
 return gulp.src(['node_modules/popper.js/dist/popper.min.js'])
-.pipe(gulp.dest("src/js"))
+.pipe(gulp.dest("docs/js"))
 .pipe(browserSync.stream());
 });
 
@@ -21,11 +21,11 @@ return gulp.src(['node_modules/popper.js/dist/popper.min.js'])
 gulp.task('serve', gulp.series( 'sass', function() {
 
 browserSync.init({
-server: "./src"
+server: "./docs"
 });
 
-gulp.watch(['src/scss/style.scss', 'src/scss/*.scss'], gulp.series('sass'));
-gulp.watch("src/*.html").on('change', browserSync.reload);
+gulp.watch(['docs/scss/style.scss', 'docs/scss/*.scss'], gulp.series('sass'));
+gulp.watch("docs/*.html").on('change', browserSync.reload);
 }));
 
 gulp.task('default',gulp.series('js','serve'));
